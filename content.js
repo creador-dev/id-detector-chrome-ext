@@ -61,5 +61,4 @@ window.addEventListener("beforeunload", () => {
   if (currentElement) {
     hideTooltip(currentElement);
   }
-  observer.disconnect();
 });
