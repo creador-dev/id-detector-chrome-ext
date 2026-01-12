@@ -6,7 +6,7 @@ document.body.appendChild(tooltip);
 
 // Track current highlighted element
 let currentElement = null;
-let isEnabled = true; // Default to enabled
+let isEnabled = false; // Default to disabled
 let displayOptions = {
   showId: true,
   showClass: true,
@@ -19,7 +19,7 @@ let displayOptions = {
 chrome.storage.sync.get(
   ["enabled", "showId", "showClass", "showTag", "showData", "showAllAttrs"],
   (result) => {
-    isEnabled = result.enabled !== false; // Default to true
+    isEnabled = result.enabled === true; // Default to false
     displayOptions.showId = result.showId !== false;
     displayOptions.showClass = result.showClass !== false;
     displayOptions.showTag = result.showTag !== false;

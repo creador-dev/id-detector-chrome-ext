@@ -1,17 +1,24 @@
 const toggle = document.getElementById("toggleExtension");
 const status = document.getElementById("status");
 const errorMessage = document.getElementById("errorMessage");
+const settingsContainer = document.getElementById("settingsContainer");
 const showIdCheckbox = document.getElementById("showId");
 const showClassCheckbox = document.getElementById("showClass");
 const showTagCheckbox = document.getElementById("showTag");
 const showDataCheckbox = document.getElementById("showData");
 const showAllAttrsCheckbox = document.getElementById("showAllAttrs");
 
+// Initialize UI - show settings by default
+errorMessage.classList.remove("show");
+settingsContainer.classList.remove("hidden");
+
 // Check if current page is supported
 function checkPageSupport() {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (tabs[0]) {
+    if (tabs[0] && tabs[0].url) {
       const url = tabs[0].url;
+      console.log("Checking URL:", url);
+
       const unsupportedPatterns = [
         "chrome://",
         "chrome-extension://",
@@ -26,24 +33,20 @@ function checkPageSupport() {
         url.startsWith(pattern)
       );
 
+      console.log("Is unsupported:", isUnsupported);
+
       if (isUnsupported) {
         errorMessage.classList.add("show");
-        // Disable controls on unsupported pages
-        toggle.disabled = true;
-        showIdCheckbox.disabled = true;
-        showClassCheckbox.disabled = true;
-        showTagCheckbox.disabled = true;
-        showDataCheckbox.disabled = true;
-        showAllAttrsCheckbox.disabled = true;
+        settingsContainer.classList.add("hidden");
       } else {
         errorMessage.classList.remove("show");
-        toggle.disabled = false;
-        showIdCheckbox.disabled = false;
-        showClassCheckbox.disabled = false;
-        showTagCheckbox.disabled = false;
-        showDataCheckbox.disabled = false;
-        showAllAttrsCheckbox.disabled = false;
+        settingsContainer.classList.remove("hidden");
       }
+    } else {
+      console.log("No valid tab or URL found");
+      // No valid tab or URL - show error
+      errorMessage.classList.add("show");
+      settingsContainer.classList.add("hidden");
     }
   });
 }

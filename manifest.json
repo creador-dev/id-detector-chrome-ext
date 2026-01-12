@@ -3,7 +3,7 @@
   "name": "Element Inspector",
   "version": "1.0.0",
   "description": "Inspect HTML elements on hover - view IDs, classes, tags, and attributes instantly",
-  "permissions": ["storage"],
+  "permissions": ["storage", "activeTab"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "assets/icons/icon_128.png",

@@ -124,6 +124,14 @@
         font-size: 13px;
       }
 
+      .settings-container {
+        display: block;
+      }
+
+      .settings-container.hidden {
+        display: none;
+      }
+
       .info {
         margin-top: 15px;
         padding: 10px;
@@ -175,16 +183,6 @@
       <div class="subtitle">Control extension behavior</div>
     </div>
 
-    <div class="toggle-container">
-      <span class="toggle-label">Enable Detection</span>
-      <label class="switch">
-        <input type="checkbox" id="toggleExtension" checked />
-        <span class="slider"></span>
-      </label>
-    </div>
-
-    <div class="status" id="status">Extension is <strong>enabled</strong></div>
-
     <div class="error-message" id="errorMessage">
       <strong>⚠️ Not Supported</strong>
       <div>
@@ -193,7 +191,18 @@
       </div>
     </div>
 
-    <div class="options-section">
+    <div class="settings-container" id="settingsContainer">
+      <div class="toggle-container">
+        <span class="toggle-label">Enable Detection</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleExtension" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="status" id="status">Extension is <strong>enabled</strong></div>
+
+      <div class="options-section">
       <div class="options-title">Display Options</div>
       <div class="option-item">
         <input type="checkbox" id="showId" checked />
@@ -215,9 +224,9 @@
         <input type="checkbox" id="showAllAttrs" />
         <label for="showAllAttrs">Show All Attributes</label>
       </div>
-    </div>
 
-    <div class="info">Hover over elements to see their details</div>
+      <div class="info">Hover over elements to see their details</div>
+    </div>
 
     <script src="popup.js"></script>
   </body>
