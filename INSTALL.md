@@ -5,7 +5,7 @@
 1. Open Chrome and navigate to `chrome://extensions/`
 2. Enable "Developer mode" using the toggle in the top right corner
 3. Click "Load unpacked"
-4. Select the extension directory (`id-detector-chrome-ext`)
+4. Select the extension directory (`element-inspector`)
 5. The extension should now be loaded and active
 
 ## Using the Extension
