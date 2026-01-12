@@ -6,13 +6,13 @@
   "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "id-icon.png",
+    "default_icon": "assets/icons/icon_128.png",
     "default_title": "Element Inspector"
   },
   "icons": {
-    "16": "id-icon.png",
-    "48": "id-icon.png",
-    "128": "id-icon.png"
+    "16": "assets/icons/icon_16.png",
+    "48": "assets/icons/icon_48.png",
+    "128": "assets/icons/icon_128.png"
   },
   "content_scripts": [
     {
